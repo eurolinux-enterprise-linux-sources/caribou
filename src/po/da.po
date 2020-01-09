@@ -1,0 +1,280 @@
+# Danish translation for caribou.
+# Copyright (C) 2010 caribou's COPYRIGHT HOLDER
+# This file is distributed under the same license as the caribou package.
+# Kris Thomsen <lakristho@gmail.com>, 2010-2011.
+# Joe Hansen <joedalton2@yahoo.dk>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: caribou master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-18 17:14+0200\n"
+"PO-Revision-Date: 2011-09-18 09:35+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../caribou/settings/caribou_settings.py:5
+msgid "Caribou Preferences"
+msgstr "Indstillinger for Caribou"
+
+#: ../caribou/settings/caribou_settings.py:6
+msgid "Scanning"
+msgstr "Skanning"
+
+#: ../caribou/settings/caribou_settings.py:8
+msgid "Enable scanning"
+msgstr "Aktivér skanning"
+
+#: ../caribou/settings/caribou_settings.py:9
+msgid "Enable switch scanning"
+msgstr "Aktivér skifteskanning"
+
+#: ../caribou/settings/caribou_settings.py:12
+msgid "General"
+msgstr "Generelt"
+
+#: ../caribou/settings/caribou_settings.py:13
+msgid "Scanning mode"
+msgstr "Skanningstilstand"
+
+#: ../caribou/settings/caribou_settings.py:15
+msgid "Scanning type, subgroups, rows or linear"
+msgstr "Skanningstype, undergrupper, rækker eller lineær"
+
+#: ../caribou/settings/caribou_settings.py:16
+msgid "Subgroups"
+msgstr "Undergrupper"
+
+#: ../caribou/settings/caribou_settings.py:17
+msgid "Rows"
+msgstr "Rækker"
+
+#: ../caribou/settings/caribou_settings.py:18
+msgid "Linear"
+msgstr "Lineær"
+
+#: ../caribou/settings/caribou_settings.py:20
+msgid "Step time"
+msgstr "Trintid"
+
+#: ../caribou/settings/caribou_settings.py:21
+msgid "Time between key transitions"
+msgstr "Tid mellem tasteskift"
+
+#: ../caribou/settings/caribou_settings.py:24
+msgid "Inverse scanning"
+msgstr "Invers skanning"
+
+# Tysk:
+# "Mit dem Umschalten einen Schritt vorgehen, aktivierbar durch verzögerten "
+# "Klick"
+#: ../caribou/settings/caribou_settings.py:25
+msgid "Step with the switch, activate by dwelling"
+msgstr "Gå trinvis frem med kontakten, aktiver ved at holde nede."
+
+#: ../caribou/settings/caribou_settings.py:28
+msgid "Auto-restart scanning"
+msgstr "Genstart skanning automatisk"
+
+#: ../caribou/settings/caribou_settings.py:29
+msgid "Automatically restart scanning after item activation"
+msgstr "Automatisk genstart af skanning efter punktaktivering"
+
+#: ../caribou/settings/caribou_settings.py:30
+msgid "Scan cycles"
+msgstr "Skan cyklusser"
+
+#: ../caribou/settings/caribou_settings.py:31
+msgid "One"
+msgstr "En"
+
+#: ../caribou/settings/caribou_settings.py:32
+msgid "Two"
+msgstr "To"
+
+#: ../caribou/settings/caribou_settings.py:33
+msgid "Three"
+msgstr "Tre"
+
+#: ../caribou/settings/caribou_settings.py:34
+msgid "Four"
+msgstr "Fire"
+
+#: ../caribou/settings/caribou_settings.py:35
+msgid "Five"
+msgstr "Fem"
+
+#: ../caribou/settings/caribou_settings.py:38
+msgid "Input"
+msgstr "Input"
+
+#: ../caribou/settings/caribou_settings.py:39
+msgid "Switch device"
+msgstr "Skift enhed"
+
+#: ../caribou/settings/caribou_settings.py:41
+msgid "Switch device, keyboard or mouse"
+msgstr "Skift enhed, tastatur eller mus"
+
+#: ../caribou/settings/caribou_settings.py:43
+msgid "Keyboard"
+msgstr "Tastatur"
+
+#: ../caribou/settings/caribou_settings.py:44
+msgid "Mouse"
+msgstr "Mus"
+
+#: ../caribou/settings/caribou_settings.py:46
+msgid "Switch key"
+msgstr "Skift-tast"
+
+#: ../caribou/settings/caribou_settings.py:48
+msgid "Key to use with scanning mode"
+msgstr "Tast at bruge i skanningstilstand"
+
+#: ../caribou/settings/caribou_settings.py:50
+msgid "Right shift"
+msgstr "Højre skift"
+
+#: ../caribou/settings/caribou_settings.py:51
+msgid "Left shift"
+msgstr "Venstre skift"
+
+#: ../caribou/settings/caribou_settings.py:52
+msgid "Space"
+msgstr "Mellemrum"
+
+#: ../caribou/settings/caribou_settings.py:53
+msgid "Alt Gr"
+msgstr "Alt Gr"
+
+#: ../caribou/settings/caribou_settings.py:54
+msgid "Num lock"
+msgstr "Num lock"
+
+#: ../caribou/settings/caribou_settings.py:55
+msgid "Switch button"
+msgstr "Skift knap"
+
+#: ../caribou/settings/caribou_settings.py:58
+msgid "Mouse button to use in the scanning mode"
+msgstr "Museknap som bruges i skanningstilstand"
+
+#: ../caribou/settings/caribou_settings.py:60
+msgid "Button 1"
+msgstr "Knap 1"
+
+#: ../caribou/settings/caribou_settings.py:61
+msgid "Button 2"
+msgstr "Knap 2"
+
+#: ../caribou/settings/caribou_settings.py:62
+msgid "Button 3"
+msgstr "Knap 3"
+
+#: ../caribou/__init__.py:2
+msgid "Caribou"
+msgstr "Caribou"
+
+#: ../caribou/daemon/main.py:34
+#, python-format
+msgid "Error starting %s"
+msgstr "Fejl ved start af %s"
+
+#: ../caribou/daemon/main.py:45
+#, python-format
+msgid ""
+"In order to use %s, accessibility needs to be enabled. Do you want to enable "
+"it now?"
+msgstr ""
+"For at bruge %s, skal tilgængelighed være aktiveret. Ønsker du at aktivere "
+"den nu?"
+
+#: ../caribou/daemon/main.py:59
+#, python-format
+msgid "Accessibility has been enabled. Log out and back in again to use %s."
+msgstr ""
+"Tilgængelighed er blevet aktiveret. Log ud og ind igen for at bruge %s."
+
+#: ../caribou/daemon/main.py:156
+msgid "WARNING - Caribou: unhandled editable widget:"
+msgstr "ADVARSEL - Caribou: ikke-håndteret redigérbar kontrol:"
+
+#: ../caribou/antler/antler_settings.py:5
+msgid "Antler Preferences"
+msgstr "Indstillinger for Antler"
+
+#: ../caribou/antler/antler_settings.py:6
+msgid "Antler"
+msgstr "Antler"
+
+#: ../caribou/antler/antler_settings.py:7
+msgid "Appearance"
+msgstr "Udseende"
+
+#: ../caribou/antler/antler_settings.py:9
+msgid "Keyboard Type"
+msgstr "Tastaturtype"
+
+#: ../caribou/antler/antler_settings.py:10
+msgid "The keyboard geometry Caribou should use"
+msgstr "Tastaturgeometrien som Caribou skal bruge"
+
+#: ../caribou/antler/antler_settings.py:11
+msgid ""
+"The keyboard geometry determines the shape and complexity of the keyboard, "
+"it could range from a 'natural' look and feel good for composing simple "
+"text, to a fullscale keyboard."
+msgstr ""
+"Tastaturgeometrien bestemmer formen og kompleksiteten for tastaturet, den "
+"kan gå fra et \"naturligt\" se og føl for komponering af simpel tekst, til "
+"et tastatur i fuld skala."
+
+#. Translators: Keyboard type (similar to touch/tactile device)
+#: ../caribou/antler/antler_settings.py:16
+msgid "Touch"
+msgstr "Føl (touch)"
+
+#. Translators: Keyboard type (conventional keyboard)
+#: ../caribou/antler/antler_settings.py:18
+msgid "Full scale"
+msgstr "Fuld skala"
+
+#. Translators: Keyboard type (scanned grid by rows/columns)
+#: ../caribou/antler/antler_settings.py:20
+msgid "Scan"
+msgstr "Skan"
+
+#: ../caribou/antler/antler_settings.py:21
+#: ../caribou/antler/antler_settings.py:22
+msgid "Use System Theme"
+msgstr "Brug systemtema"
+
+#: ../caribou/antler/antler_settings.py:23
+msgid "Minimum Alpha"
+msgstr "Minimum alfa"
+
+#: ../caribou/antler/antler_settings.py:24
+msgid "Minimal opacity of keyboard"
+msgstr "Minimal uigennemsigtighed for tastatur"
+
+#: ../caribou/antler/antler_settings.py:26
+msgid "Maximum Alpha"
+msgstr "Maksimal alfa"
+
+#: ../caribou/antler/antler_settings.py:27
+msgid "Maximal opacity of keyboard"
+msgstr "Maksimal uigennemsigtighed for tastatur"
+
+#: ../caribou/antler/antler_settings.py:29
+msgid "Maximum Distance"
+msgstr "Maksimal distance"
+
+#: ../caribou/antler/antler_settings.py:30
+msgid "Maximum distance when keyboard is hidden"
+msgstr "Maksimal distance når tastaturet er skjult"

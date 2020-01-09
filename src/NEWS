@@ -1,0 +1,436 @@
+=============
+Version 0.4.11
+=============
+- Bug 690435: Press and hold should allow repeating keys like
+  backspace and spacebar
+- Improve layout file generation when building
+- Translation updates (Korean, Tadjik)
+
+=============
+Version 0.4.10
+=============
+- Add --help option to caribou command
+- Translation updates (Portuguese)
+
+=============
+Version 0.4.9
+=============
+- Bug 694921: daemon: check if atspi bus is ready to use
+- Bug 694480: build failure: ../tools/make_schema.py caribou.settings.CaribouSettings
+- Bug 689844: Setting keyboard to 'full' crashes the shell
+- build: Mark as not supporting srcdir != builddir
+
+=============
+Version 0.4.8
+=============
+- Bug 694011: Track XKB group configuration change
+- Bug 688218: port daemon from Python to Vala
+- Bug 680556: On-screen keyboard is missing the ~ (tilda) character
+- Bug 693616: Tells me that a11y is off and need to log out
+- Bug 684887: remove desktop file
+- Bug 691992: libcaribou: fix dereferencing Gdk.XEvent pointer with Vala 0.16
+- Don't rebuild docs on every "make" run
+- Add missing symbols to fullscale layouts as well
+- Translation updates (Uyghur)
+
+=============
+Version 0.4.7
+=============
+- Bug 687244: Add documentation support
+- Bug 687315: various packaging fixes:
+  - build: only export public symbols from the library
+  - build: make sure to define $datarootdir in generated scripts
+  - build: suppress Python bytecode generation when building
+  - build: install vapi file
+  - build: install pkg-config file
+  - build: use git.mk
+  - build: don't use deprecated Automake variable INCLUDE
+  - build: rename caribou.pc to caribou-1.0.pc
+- Bug 691463: libcaribou: avoid integer overflow
+- Fix 'make install' when --enable-docs is used
+- Translation updates (Friulian)
+
+=============
+Version 0.4.6
+=============
+- Bug 688517: libcaribou: refactor some code
+- Bug 688656: key-model: Use key-released instead of key-clicked to hide subkeys
+- Bug 689823: caribou-preferences: Fix expansion of LD_LIBRARY_PATH
+- Translation updates (Aragonese)
+
+=============
+Version 0.4.5
+=============
+- Bug 687018: xadapter: use level3 shift if possible
+- Bug 673547: xadapter: use XkbChangeMap instead of XkbSetMap
+- Bug 673547: xadapter: specify core device when callin XkbSetMap
+- Bug 685629: portability: use "=" operator instead of "==" in shell
+  scripts
+- portability: allow the use of /bin/sh instead of /bin/bash
+- Bug 685607: libcaribou: simplify using xtst.vapi provided by vala
+- Bug 673579: libcaribou: Ignore level 3 keysyms when looking up
+  keycode
+- Bug 687026: xml: add "text" attribute to key
+- Bug 685792: daemon: use GDBUS directly instead of dbus-python
+- Bug 686200: make_schema: don't translate string in schema files
+- Bug 687409: Fix border-image slice values in antler's gtk CSS
+- Bug 687166: Port from libgee 0.6 to 0.8
+- Bug 656175: Port label string construction code to libcaribou
+- Bug 667455: Support out-of-tree build
+- Bug 673543: Fix typo in antler code
+- Translation updates (Latvian, Hindi, Malayalam, Bengali, Dutch,
+  Bengali India)
+
+=============
+Version 0.4.4
+=============
+- Removed unneeded gnome-doc-utils dependency
+- Bug 683256 - caribou unnecessarily requires pygobject 3.3.3 or up to
+  build
+- Translation updates (Galician, Polish, Vietnamese, Marathi,
+  Gujarati, Bengali)
+
+=============
+Version 0.4.3
+=============
+- Bug 674344: Not using units is deprecated in gtk CSS is deprecated
+- Update after pygobject bug 676746
+- Translation updates (Norwegian, Greek, Traditional Chinese)
+
+=============
+Version 0.4.2
+=============
+- Build fixes
+- Translation updates (Telugu, Norwegian bokmål,
+  Romanian, Ukrainian, Slovak, Makedonian, Finnish,
+  Traditional Chinese, Estonian, Uyghur, Sinhala,
+  Belarusian, Korean, Khmer, Kannada, Arabic)
+
+=============
+Version 0.4.1
+=============
+
+What's New
+==========
+- Autostart only in GNOME and Unity (bug #660901).
+
+New And Updated Translations
+============================
+- Yaron Shahrabani (he)
+- Simos Xenitellis & Ioannis Zampoukas (el)
+- Nguyễn Thái Ngọc Duy (vi)
+- Daniel Korostil (uk)
+- YunQiang Su (zh_CN)
+
+=============
+Version 0.4.0
+=============
+
+What's New
+==========
+- Don't try to replace an existing keyboard service (bug #659867).
+- Fix header installation (bug #659793).
+
+New And Updated Translations
+============================
+- Nilamdyuti Goswami (as)
+- Carme Cabal (ca)
+- Carme Cabal (ca@valencia)
+- Mario Blättermann (de)
+- Inaki Larranaga Murgoitio (eu)
+- Gabor Kelemen (hu)
+- Jiro Matsuzawa (ja)
+- Shankar Prasad (kn)
+- Seong-ho, Cho (ko)
+
+==============
+Version 0.3.92
+==============
+
+What's New
+==========
+- Add gio-2.0 to configure.ac (bug #658969).
+- fix GTK+ module loading/unloading and autoload (bug #655979).
+- don't add the event filter until the dbus call finishes (bug
+#658063).
+- Set correct share-library in gir typelib (bug #658345).
+- Fixed antler script for Fedora 64 bitfriendly packages (bug
+#658533).
+- Fix caribou daemon to use new keyboard DBus API (bug #658533).
+
+New And Updated Translations
+============================
+- Xandru Armesto (ast)
+- Ivaylo Valkov (bg)
+- Joe Hansen (da)
+- Bruce Cowan (en_GB)
+- Jorge González (es)
+- Arash Mousavi (fa)
+- Sweta Kothari (gu)
+- Rajesh (hi)
+- Andika Triwidada (id)
+- Milo Casagrande (it)
+- Aurimas Černius (lt)
+- Rūdofls Mazurs (lv)
+- Subhashish (or)
+- A S Alam (pa)
+- Piotr Drąg (pl)
+- Duarte Loreto (pt)
+- Antonio Fernandes C. Neto (pt_BR)
+- Yuri Myasoedov (ru)
+- Matej Urbančič (sl)
+- Мирослав Николић (sr)
+- Miroslav Nikolić (sr@latin)
+- Daniel Nylander (sv)
+- Dr.T.Vasudevan (ta)
+- Muhammet Kara (tr)
+- YunQiang Su (zh_CN)
+
+==============
+Version 0.3.91
+==============
+
+What's New
+==========
+- Update Antler to latest GTK+ 3.2 shenanigans.
+- Require pygobject 3.0.
+- Fixes to bugs that were.
+
+New And Updated Translations
+============================
+- Marek Černocký (cs)
+- Kristjan SCHMIDT (eo)
+- Jorge González (es)
+- Arash Mousavi (fa)
+- Claude Paroz (fr)
+- Fran Dieguez (gl)
+- Kjartan Maraas (nb)
+- Antonio Fernandes C. Neto (pt_BR)
+- Daniel Nylander (sv)
+- Dr.T.Vasudevan (ta)
+- Chao-Hsiung Liao (zh_HK)
+- Chao-Hsiung Liao (zh_TW)
+
+=============
+Version 0.3.5
+=============
+
+What's New
+==========
+- Added modifiers support.
+- Replaced IM module with GTK+ module so it does not override the
+user's preferred IM.
+- Added "full scale" keyboards to caribou.
+- Remove emoticon buttons, for now.
+
+New And Updated Translations
+============================
+- Marek Černocký (cs)
+- Daniel Mustieles (es)
+- Gabriel Speckhahn (pt_BR)
+- Yuri Myasoedov (ru)
+- Matej Urbančič (sl)
+- Yinghua Wang (zh_CN)
+
+=============
+Version 0.3.3
+=============
+
+What's New
+==========
+- Converted layout files to preprocessed XML files that could include
+external layout files and override specific elements.
+- Fixed GI in Makefiles/configure.ac (bug #653268).
+- Fixed typo in IM configuring (bug #653754).
+
+New And Updated Translations
+============================
+- Mario Blättermann (de)
+
+=============
+Version 0.3.2
+=============
+
+What's New
+==========
+- Rewritten almost entirely from scratch, featuring a GObject library
+for a DBus activated OSK.
+
+New And Updated Translations
+============================
+- Marek Černocký (cs)
+- Kris Thomsen (da)
+- Christian Kirbach (de)
+- Daniel Mustieles (es)
+- Mahyar Moghimi (fa)
+- Jiro Matsuzawa (ja)
+- Kjartan Maraas (nb)
+- Djavan Fagundes (pt_BR)
+- Yuri Myasoedov (ru)
+- Andrej Žnidaršič (sl)
+- Sergiy Gavrylov (uk)
+- lainme (zh_CN)
+
+==============
+Version 0.2.00
+==============
+
+What's New
+==========
+- Use /org/gnome as starting path for schemas (Thanks Luca Ferretti!)
+
+New And Updated Translations
+============================
+- Silvia Bindelli (it)
+- Kjartan Maraas (nb)
+- Daniel Nylander (sv)
+
+==============
+Version 0.1.92
+==============
+
+What's New
+==========
+- Seperate autorun desktop file.
+
+New And Updated Translations
+============================
+- Daniel Mustieles (es)
+- Piotr Drąg (pl)
+
+==============
+Version 0.1.91
+==============
+
+What's New
+==========
+- Raise an error when no keyboard is loaded.
+- Make caribou startup automatically (Thanks Bastien Nocera!)
+- Use GTK3 CSS theming for custom colors.
+- Look if a11y is enabled in GSettings.
+- Port app preferences and schema to GSettings.
+
+New And Updated Translations
+============================
+- Khaled Hosny (ar)
+- Kostas Papadimas (el)
+- Claude Paroz (fr)
+- marcoslans (gl)
+- Yaron Shahrabani (he)
+- Mateus Zenaide (pt_BR)
+
+=============
+Version 0.1.7
+=============
+
+What's New
+==========
+- Ported to GTK3 and PyGI. Yikes!
+- New Japanese keyboard. Thanks Jiro Matsuzawa!
+- Many bugs fixed during the porting process that involved a lot of
+  rewriting code.
+- Many bugs introduced during the porting process that involved a lot of
+  rewriting code.
+
+New And Updated Translations
+============================
+- Christian Kirbach (de)
+- Daniel Mustieles (es)
+- Claude Paroz (fr)
+- Gabor Kelemen (hu)
+- Hugo Vaz Sampaio (pt_BR)
+- Andrej Žnidaršič (sl)
+- Daniel Nylander (sv)
+- lainme (zh_CN)
+
+=============
+Version 0.1.6
+=============
+
+What's New
+==========
+- Added basic scanning support (thanks warp.es!)
+- Added proper key highlight colors.
+- Cleaned up configuration and preferences and made it more MVC like.
+- Created cleaner preferences window.
+
+New And Updated Translations
+============================
+- Khaled Hosny (ar)
+- Xandru Armesto (ast)
+- Ivaylo Valkov (bg)
+- Jordi Estrada (ca)
+- David Planella (ca@valencia)
+- Marek Černocký (cs)
+- Kris Thomsen (da)
+- Mario Blättermann (de)
+- Kostas Papadimas (el)
+- Philip Withnall (en_GB)
+- Jorge González (es)
+- Claude Paroz (fr)
+- Fran Dieguez (gl)
+- Yaron Shahrabani (he)
+- Gabor Kelemen (hu)
+- Dirgita (id)
+- Silvia Bindelli (it)
+- Jiro MATSUZAWA (ja)
+- Ani Peter (ml)
+- Ahmed Noor Kader Mustajir Md Eusoff (ms)
+- Kjartan Maraas (nb)
+- Sense Hofstede (nl)
+- Tomasz Dominikowski (pl)
+- Mateus Zenaide (pt_BR)
+- Lucian Adrian Grijincu (ro)
+- Victor Vislobokov (ru)
+- Andrej Žnidaršič (sl)
+- Милош Поповић (sr)
+- Miloš Popović (sr@latin)
+- Daniel Nylander (sv)
+- Dr.T.Vasudevan (ta)
+- Gheyret Kenji (ug)
+- Dark Raven (zh_CN)
+- Chao-Hsiung Liao (zh_HK)
+- Chao-Hsiung Liao (zh_TW)
+
+=============
+Version 0.1.5
+=============
+
+What's New
+==========
+- Added configurable key and highlight colors (bug #622246).
+- Added a desktop file (bug #618292).
+- Fix layout retrieval (bug #622221).
+- Don't change layout when switching focus (bug #621654).
+- Unpress modifier when Caribou quites (bug #621596).
+- Source files reshuffling.
+- Added JSON/XML configurable layouts (bug #613229).
+
+New And Updated Translations
+============================
+- Marek Černocký (cs)
+- Yaron Shahrabani (he)
+- Andika Triwidada (id)
+- Kjartan Maraas (nb)
+- Torstein Adolf Winterseth (nn)
+- A S Alam (pa)
+- Lucian Adrian Grijincu (ro)
+- Daniel Nylander (sv)
+- Anonymous (ta)
+- YunQiang Su (zh_CN)
+
+=============
+Version 0.1.2
+=============
+
+What's New
+==========
+This is the first development release for GNOME 3.0. God help us all!
+
+New And Updated Translations
+============================
+- Christian Kirbach (de)
+- Jorge González (es)
+- Claude Paroz (fr)
+- Fran Diéguez (gl)
+- Andrej Žnidaršič (sl)

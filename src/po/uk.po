@@ -1,0 +1,356 @@
+# Ukrainian translation for caribou.
+# Copyright (C) 2011 caribou's COPYRIGHT HOLDER
+# This file is distributed under the same license as the caribou package.
+# Sergiy Gavrylov <sergiovana@bigmir.net>, 2011.
+# Alexandr Toorchyn <ilex@mail.ua>, 2011.
+# Korostil Daniel <ted.korostiled@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: caribou master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-11 13:54+0200\n"
+"PO-Revision-Date: 2011-12-11 14:30+0300\n"
+"Last-Translator: Korostil Daniel <ted.korostiled@gmail.com>\n"
+"Language-Team: translation@linux.org.ua\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.6.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../caribou/settings/caribou_settings.py:5
+msgid "Caribou Preferences"
+msgstr "Параметри Caribou"
+
+#: ../caribou/settings/caribou_settings.py:6
+msgid "Scanning"
+msgstr "Сканування"
+
+#: ../caribou/settings/caribou_settings.py:8
+msgid "Enable scanning"
+msgstr "Увімкнути сканування"
+
+#: ../caribou/settings/caribou_settings.py:9
+msgid "Enable switch scanning"
+msgstr "Увімкнути перемикач сканування"
+
+#: ../caribou/settings/caribou_settings.py:12
+msgid "General"
+msgstr "Загальне"
+
+#: ../caribou/settings/caribou_settings.py:13
+msgid "Scanning mode"
+msgstr "Режим сканування"
+
+#: ../caribou/settings/caribou_settings.py:15
+msgid "Scanning type, subgroups, rows or linear"
+msgstr "Тип сканування, підгруп, рядків або ліній"
+
+#: ../caribou/settings/caribou_settings.py:16
+msgid "Subgroups"
+msgstr "Підгрупи"
+
+#: ../caribou/settings/caribou_settings.py:17
+msgid "Rows"
+msgstr "Рядки"
+
+#: ../caribou/settings/caribou_settings.py:18
+msgid "Linear"
+msgstr "Лінії"
+
+#: ../caribou/settings/caribou_settings.py:20
+msgid "Step time"
+msgstr "Час переходу"
+
+#: ../caribou/settings/caribou_settings.py:21
+msgid "Time between key transitions"
+msgstr "Час переходу між клавішами"
+
+#: ../caribou/settings/caribou_settings.py:24
+msgid "Inverse scanning"
+msgstr "Зворотне сканування"
+
+#: ../caribou/settings/caribou_settings.py:25
+msgid "Step with the switch, activate by dwelling"
+msgstr "Крок з перемикачем, увімкнути через житло"
+
+#: ../caribou/settings/caribou_settings.py:28
+msgid "Auto-restart scanning"
+msgstr "Автоматичний перезапуск сканування"
+
+#: ../caribou/settings/caribou_settings.py:29
+msgid "Automatically restart scanning after item activation"
+msgstr "Автоматичний перезапуск сканування після ввімкнення"
+
+#: ../caribou/settings/caribou_settings.py:30
+msgid "Scan cycles"
+msgstr "Цикли сканування"
+
+#: ../caribou/settings/caribou_settings.py:31
+msgid "One"
+msgstr "Один"
+
+#: ../caribou/settings/caribou_settings.py:32
+msgid "Two"
+msgstr "Два"
+
+#: ../caribou/settings/caribou_settings.py:33
+msgid "Three"
+msgstr "Три"
+
+#: ../caribou/settings/caribou_settings.py:34
+msgid "Four"
+msgstr "Чотири"
+
+#: ../caribou/settings/caribou_settings.py:35
+msgid "Five"
+msgstr "П'ять"
+
+#: ../caribou/settings/caribou_settings.py:38
+msgid "Input"
+msgstr "Ввід"
+
+#: ../caribou/settings/caribou_settings.py:39
+msgid "Switch device"
+msgstr "Перемкнути пристрій"
+
+#: ../caribou/settings/caribou_settings.py:41
+msgid "Switch device, keyboard or mouse"
+msgstr "Перемкнути пристрій, клавіатура або пристрій"
+
+#: ../caribou/settings/caribou_settings.py:43
+msgid "Keyboard"
+msgstr "Клавіатура"
+
+#: ../caribou/settings/caribou_settings.py:44
+msgid "Mouse"
+msgstr "Миша"
+
+#: ../caribou/settings/caribou_settings.py:46
+msgid "Switch key"
+msgstr "Клавіша перемикання"
+
+#: ../caribou/settings/caribou_settings.py:48
+msgid "Key to use with scanning mode"
+msgstr "Клавіша для вмикання режиму стеження"
+
+#: ../caribou/settings/caribou_settings.py:50
+msgid "Right shift"
+msgstr "Правий shift"
+
+#: ../caribou/settings/caribou_settings.py:51
+msgid "Left shift"
+msgstr "Лівий shift"
+
+#: ../caribou/settings/caribou_settings.py:52
+msgid "Space"
+msgstr "Простір"
+
+#: ../caribou/settings/caribou_settings.py:53
+msgid "Alt Gr"
+msgstr "Alt Gr"
+
+#: ../caribou/settings/caribou_settings.py:54
+msgid "Num lock"
+msgstr "Num lock"
+
+#: ../caribou/settings/caribou_settings.py:55
+msgid "Switch button"
+msgstr "Кнопка перемикання"
+
+#: ../caribou/settings/caribou_settings.py:58
+msgid "Mouse button to use in the scanning mode"
+msgstr "Кнопка миші для вмикання режиму сканування"
+
+#: ../caribou/settings/caribou_settings.py:60
+msgid "Button 1"
+msgstr "Кнопка 1"
+
+#: ../caribou/settings/caribou_settings.py:61
+msgid "Button 2"
+msgstr "Кнопка 2"
+
+#: ../caribou/settings/caribou_settings.py:62
+msgid "Button 3"
+msgstr "Кнопка 3"
+
+#: ../caribou/__init__.py:2
+msgid "Caribou"
+msgstr "Caribou"
+
+#: ../caribou/daemon/main.py:34
+#, python-format
+msgid "Error starting %s"
+msgstr "Помилка запускання %s"
+
+#: ../caribou/daemon/main.py:45
+#, python-format
+msgid ""
+"In order to use %s, accessibility needs to be enabled. Do you want to enable "
+"it now?"
+msgstr ""
+"Потрібно увімкнути доступність, щоб користуватись %s. Увімкнути їх зараз?"
+
+#: ../caribou/daemon/main.py:59
+#, python-format
+msgid "Accessibility has been enabled. Log out and back in again to use %s."
+msgstr ""
+"Доступність увімкнено. Вийдіть з сеансу і увійдіть знову, щоб користуватись "
+"%s."
+
+#: ../caribou/daemon/main.py:156
+msgid "WARNING - Caribou: unhandled editable widget:"
+msgstr "ЗАСТЕРЕЖЕННЯ — Caribou: необроблений змінюваний віджет:"
+
+#: ../caribou/antler/antler_settings.py:5
+msgid "Antler Preferences"
+msgstr "Параметри Antler"
+
+#: ../caribou/antler/antler_settings.py:6
+msgid "Antler"
+msgstr "Antler"
+
+#: ../caribou/antler/antler_settings.py:7
+msgid "Appearance"
+msgstr "Вигляд"
+
+#: ../caribou/antler/antler_settings.py:9
+msgid "Keyboard Type"
+msgstr "Тип клавіатури"
+
+#: ../caribou/antler/antler_settings.py:10
+msgid "The keyboard geometry Caribou should use"
+msgstr "Геометрія клавіатури, яку використовуватиме Caribou"
+
+#: ../caribou/antler/antler_settings.py:11
+msgid ""
+"The keyboard geometry determines the shape and complexity of the keyboard, "
+"it could range from a 'natural' look and feel good for composing simple "
+"text, to a fullscale keyboard."
+msgstr ""
+"Геометрія клавіатури визначає форму і складність клавіатури, вона може бути "
+"від «natural», що добре для простого набирання тексту, до повномасштабної "
+"клавіатури."
+
+#. Translators: Keyboard type (similar to touch/tactile device)
+#: ../caribou/antler/antler_settings.py:16
+msgid "Touch"
+msgstr "Дотична"
+
+#. Translators: Keyboard type (conventional keyboard)
+#: ../caribou/antler/antler_settings.py:18
+msgid "Full scale"
+msgstr "Повномасштабна"
+
+#. Translators: Keyboard type (scanned grid by rows/columns)
+#: ../caribou/antler/antler_settings.py:20
+msgid "Scan"
+msgstr "Сканувальна"
+
+#: ../caribou/antler/antler_settings.py:21
+#: ../caribou/antler/antler_settings.py:22
+msgid "Use System Theme"
+msgstr "Використовувати системну тему"
+
+#: ../caribou/antler/antler_settings.py:23
+msgid "Minimum Alpha"
+msgstr "Мінімальна альфа"
+
+#: ../caribou/antler/antler_settings.py:24
+msgid "Minimal opacity of keyboard"
+msgstr "Мінімальна непрозорість клавіатури"
+
+#: ../caribou/antler/antler_settings.py:26
+msgid "Maximum Alpha"
+msgstr "Максимальна альфа"
+
+#: ../caribou/antler/antler_settings.py:27
+msgid "Maximal opacity of keyboard"
+msgstr "Максимальна непрозорість клавіатури"
+
+#: ../caribou/antler/antler_settings.py:29
+msgid "Maximum Distance"
+msgstr "Максимальна відстань"
+
+#: ../caribou/antler/antler_settings.py:30
+msgid "Maximum distance when keyboard is hidden"
+msgstr "Максимальна відстань, коли клавіатуру сховано"
+
+#~ msgid "Keyboard layout"
+#~ msgstr "Розкладка клавіатури"
+
+#~ msgid ""
+#~ "The layout should be in the data directory of Caribou (usually /usr/share/"
+#~ "caribou/keyboards) and should be a .xml or .json file."
+#~ msgstr ""
+#~ "Розкладка має бути в каталозі даних Caribou (зазвичай /usr/share/caribou/"
+#~ "keyboards) у форматі файлів .xml або .json."
+
+#~ msgid "Color"
+#~ msgstr "Колір"
+
+#~ msgid "Use the default theme colors"
+#~ msgstr "Використовувати типову тему кольорів"
+
+#~ msgid "Normal state"
+#~ msgstr "Нормальний стан"
+
+#~ msgid "Color of the keys when there is no event on them"
+#~ msgstr "Колір неактивних клавіш"
+
+#~ msgid "Mouse over"
+#~ msgstr "Під вказівником миші"
+
+#~ msgid "Color of the keys when the mouse goes over the key"
+#~ msgstr "Колір клавіш під вказівником миші"
+
+#~ msgid "Font and size"
+#~ msgstr "Шрифт та розмір"
+
+#~ msgid "Use system fonts"
+#~ msgstr "Використовувати системні шрифти"
+
+#~ msgid "Use the default system font for keyboard"
+#~ msgstr "Типовий системний шрифт для клавіатури"
+
+#~ msgid "Key font"
+#~ msgstr "Шрифт клавіш"
+
+#~ msgid "Custom font for keyboard"
+#~ msgstr "Власний шрифт для клавіатури"
+
+#~ msgid "Block"
+#~ msgstr "Блок"
+
+#~ msgid "Row"
+#~ msgstr "Рядок"
+
+#~ msgid "Scan in reverse order"
+#~ msgstr "Сканування в зворотному порядку"
+
+#~ msgid "Block color"
+#~ msgstr "Колір блоку"
+
+#~ msgid "Color of block scans"
+#~ msgstr "Колір блоку сканування"
+
+#~ msgid "Row color"
+#~ msgstr "Колір рядка"
+
+#~ msgid "Color of row scans"
+#~ msgstr "Колір рядка  сканування"
+
+#~ msgid "Key color"
+#~ msgstr "Колір клавіші"
+
+#~ msgid "Color of key scans"
+#~ msgstr "Колір клавіші сканування"
+
+#~ msgid "Cancel color"
+#~ msgstr "Колір скасування"
+
+#~ msgid "Color of cancel scan"
+#~ msgstr "Колір скасування сканування"
