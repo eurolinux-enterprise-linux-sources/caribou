@@ -1,6 +1,6 @@
 Name:           caribou
 Version:        0.4.11
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        A simplified in-place on-screen keyboard
 License:        LGPLv2+
 URL:            http://live.gnome.org/Caribou
@@ -156,6 +156,12 @@ fi
 
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.4.11-3
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.4.11-2
+- Mass rebuild 2013-12-27
+
 * Mon Jun 10 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.4.11-1
 - Update to 0.4.11
 
