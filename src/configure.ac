@@ -1,12 +1,27 @@
 AC_PREREQ([2.63])
 AC_INIT([caribou],
-        [0.4.16],
+        [0.4.21],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=caribou],
         [caribou])
 
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_PROG_LIBTOOL
+
+# If library source has changed since last release, increment revision
+# If public symbols have been added, removed or changed since last release,
+#  increment current and set revision to 0
+# If public symbols have been added since last release, increment age
+# If public symbols have been removed since last release, set age to 0
+m4_define([libcaribou_lt_current], [0])
+m4_define([libcaribou_lt_revision], [0])
+m4_define([libcaribou_lt_age], [0])
+LT_CURRENT=libcaribou_lt_current
+LT_REVISION=libcaribou_lt_revision
+LT_AGE=libcaribou_lt_age
+AC_SUBST([LT_CURRENT])
+AC_SUBST([LT_REVISION])
+AC_SUBST([LT_AGE])
 
 AM_INIT_AUTOMAKE([1.11 -Wno-portability dist-xz no-dist-gzip])
 AM_MAINTAINER_MODE([enable])
@@ -150,6 +165,7 @@ data/layouts/Makefile
 data/layouts/touch/Makefile
 data/layouts/scan/Makefile
 data/layouts/fullscale/Makefile
+data/layouts/tablet/Makefile
 libcaribou/Makefile
 libcaribou/caribou-1.0.pc
 modules/Makefile

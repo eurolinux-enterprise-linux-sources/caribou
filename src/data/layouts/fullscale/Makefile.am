@@ -1,13 +1,16 @@
 fullscalelayoutsdir = $(datadir)/caribou/layouts/fullscale
 fullscalelayouts_in_files =\
-    us.xml.in
+    us.xml.in \
+    de.xml.in
 fullscalelayouts_DATA = $(fullscalelayouts_in_files:.xml.in=.xml)
 
 common_files = \
 	common/qwerty.xml \
+	common/qwertz.xml \
 	common/symbols.xml
 
 us.xml: $(common_files)
+de.xml: $(common_files)
 
 SUFFIXES = .xml.in .xml
 

@@ -1,14 +1,13 @@
 Name:           caribou
-Version:        0.4.16
+Version:        0.4.21
 Release:        1%{?dist}
 Summary:        A simplified in-place on-screen keyboard
 License:        LGPLv2+
 URL:            http://live.gnome.org/Caribou
 Source0:        http://download.gnome.org/sources/caribou/0.4/caribou-%{version}.tar.xz
-Patch0:         caribou-0.4.8-multilib.patch
-Patch1:         caribou-0.4.8-fix-python-exec.patch
+Patch1:         caribou-0.4.20-fix-python-exec.patch
+Patch2:         caribou-0.4.20-multilib.patch
 
-BuildRequires:  python2-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  pygobject3-devel
@@ -24,7 +23,12 @@ BuildRequires:  libgee-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  at-spi2-core-devel
 
-Requires:       python-%{name} = %{version}-%{release}
+%if 0%{?rhel}
+Requires:       python2-%{name} = %{version}-%{release}
+%else
+# Changed in F23 to pull python3-caribou default
+Requires:       python3-%{name} = %{version}-%{release}
+%endif
 Requires:       gobject-introspection
 Requires:       caribou-gtk2-module
 Requires:       caribou-gtk3-module
@@ -48,16 +52,34 @@ Obsoletes:      gok-devel < 2.30.1-6
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package     -n python-caribou
+%package     -n python2-caribou
 Summary:        Keyboard UI for %{name}
+BuildRequires:  python2-devel
 Requires:       pygobject3
 Requires:       pyatspi
 Requires:       %{name} = %{version}-%{release}
 Obsoletes:      caribou < 0.4.1-3
+Obsoletes:      python-caribou < 0.4.20-2
+Provides:       python-caribou = %{version}
 BuildArch:      noarch
 
-%description  -n python-caribou
+%description  -n python2-caribou
 This package contains caribou python GUI
+
+%if !0%{?rhel}
+%package     -n python3-caribou
+Summary:        Keyboard UI for %{name}
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject
+Requires:       python3-gobject
+Requires:       python3-pyatspi
+Requires:       %{name} = %{version}-%{release}
+Obsoletes:      caribou < 0.4.1-3
+BuildArch:      noarch
+
+%description  -n python3-caribou
+This package contains caribou python3 GUI
+%endif
 
 %package        gtk2-module
 Summary:        Gtk2 module for %{name}
@@ -77,7 +99,11 @@ This package contains caribou module for gtk3 applications.
 
 %package        antler
 Summary:        Keyboard implementation for %{name}
-Requires:       python-%{name} = %{version}-%{release}
+%if 0%{?rhel}
+Requires:       python2-%{name} = %{version}-%{release}
+%else
+Requires:       python3-%{name} = %{version}-%{release}
+%endif
 Obsoletes:      caribou < 0.4.1-3
 
 %description    antler
@@ -86,16 +112,24 @@ non-gnome-shell sessions.
 
 %prep
 %setup -q
-%patch0 -p1 -b .multilib
 %patch1 -p1 -b .fix-python-exec
+%patch2 -p1 -b .multilib
 
 %build
 %configure --disable-static
 make V=1 %{?_smp_mflags}
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+make install DESTDIR=%{buildroot} INSTALL="install -p"
+
+%if !0%{?rhel}
+# For Python3
+make clean
+%configure --disable-static PYTHON=python3
+make install DESTDIR=%{buildroot} INSTALL="install -p"
+%endif
+
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/caribou-autostart.desktop || :
 desktop-file-validate $RPM_BUILD_ROOT%{_libdir}/gnome-settings-daemon-3.0/gtk-modules/caribou-gtk-module.desktop || :
@@ -122,7 +156,8 @@ fi
 /usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f caribou.lang
-%doc NEWS COPYING README
+%doc NEWS README
+%license COPYING
 %{_bindir}/caribou-preferences
 %{_datadir}/caribou
 %{_libdir}/girepository-1.0/Caribou-1.0.typelib
@@ -133,8 +168,13 @@ fi
 %{_libdir}/gnome-settings-daemon-3.0/gtk-modules/caribou-gtk-module.desktop
 %{_libexecdir}/caribou
 
-%files -n python-caribou
-%{python_sitelib}/caribou
+%files -n python2-caribou
+%{python2_sitelib}/caribou
+
+%if !0%{?rhel}
+%files -n python3-caribou
+%{python3_sitelib}/caribou
+%endif
 
 %files devel
 %{_includedir}/*
@@ -157,6 +197,10 @@ fi
 
 
 %changelog
+* Wed Oct 19 2016 Kalev Lember <klember@redhat.com> - 0.4.21-1
+- Update to 0.4.21
+- Resolves: #1386821
+
 * Mon Mar 23 2015 Richard Hughes <rhughes@redhat.com> - 0.4.16-1
 - Update to 0.4.16
 - Resolves: #1174709

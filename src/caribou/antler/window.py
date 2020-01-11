@@ -20,16 +20,16 @@
 # along with this program; if not, write to the Free Software Foundation,
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import gi
+gi.require_version('Clutter', '1.0')
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
 from gi.repository import Clutter
-from antler_settings import AntlerSettings
+from .antler_settings import AntlerSettings
 from math import sqrt
 import os
 import sys
-
-Clutter.init("antler")
 
 
 class AnimatedWindowBase(Gtk.Window, Clutter.Animatable):
@@ -45,6 +45,8 @@ class AnimatedWindowBase(Gtk.Window, Clutter.Animatable):
         }
     def __init__(self):
         GObject.GObject.__init__(self, type=Gtk.WindowType.POPUP)
+        Clutter.init(None)
+
         # animation
         self._stage = Clutter.Stage.get_default()
         self._move_animation = None
@@ -56,7 +58,7 @@ class AnimatedWindowBase(Gtk.Window, Clutter.Animatable):
         elif property.name == "antler-window-y":
             return self.get_position()[1]
         else:
-            raise AttributeError, 'unknown property %s' % property.name
+            raise AttributeError('unknown property %s' % property.name)
 
     def do_set_property(self, property, value):
         if property.name == "antler-window-x":
@@ -66,7 +68,7 @@ class AnimatedWindowBase(Gtk.Window, Clutter.Animatable):
             if value is not None:
                 self.move(self.get_position()[0], value)
         else:
-            raise AttributeError, 'unknown property %s' % property.name
+            raise AttributeError('unknown property %s' % property.name)
 
     def do_animate_property(self, animation, prop_name, initial_value,
                             final_value, progress, gvalue):
@@ -220,7 +222,7 @@ class AntlerWindow(ProximityWindowBase):
         self.add(self._vbox)
 
         self.keyboard_view_factory = keyboard_view_factory
-        self.keyboard_view = keyboard_view_factory (settings.keyboard_type.value)
+        self.keyboard_view = keyboard_view_factory (keyboard_type=settings.keyboard_type.value)
 
         self._vbox.pack_start(self.keyboard_view, True, True, 0)
 

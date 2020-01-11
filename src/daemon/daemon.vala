@@ -17,7 +17,6 @@ namespace Caribou {
         Atspi.Accessible current_acc;
         unowned Gdk.Display display;
         uint name_id;
-        GLib.MainLoop main_loop;
 
         public Daemon () {
             display = Gdk.Display.get_default ();
@@ -26,7 +25,6 @@ namespace Caribou {
                                     BusNameOwnerFlags.ALLOW_REPLACEMENT
                                     | BusNameOwnerFlags.REPLACE,
                                     on_bus_acquired, null, quit);
-            main_loop = new GLib.MainLoop ();
         }
 
         ~Daemon () {
@@ -56,7 +54,10 @@ namespace Caribou {
         }
 
         uint32 get_timestamp () {
-            return Gdk.X11Display.get_user_time (display);
+            if (display is Gdk.X11Display)
+                return Gdk.X11Display.get_user_time (display);
+            else
+                return 0;
         }
 
         void set_entry_location (Atspi.Accessible acc) throws Error {
@@ -174,7 +175,9 @@ namespace Caribou {
                                             0,
                                             null,
                                             on_get_proxy_ready);
-            main_loop.run ();
+            // Use Atspi.Event.{main,quit}, instead of GLib.MainLoop
+            // to enable property caching in libatspi.
+            Atspi.Event.main ();
         }
 
         public void quit () {
@@ -193,7 +196,7 @@ namespace Caribou {
                 keyboard = null;
             }
 
-            main_loop.quit ();
+            Atspi.Event.quit ();
         }
     }
 }
@@ -211,7 +214,7 @@ static int main (string[] args) {
     Intl.textdomain (Config.GETTEXT_PACKAGE);
 
     var option_context = new OptionContext (_(
-        "- daemon listening accessibility events to launch on screen keyboard"));
+        "- accessibility event monitoring daemon for screen keyboard"));
     option_context.add_main_entries (options, "caribou");
     try {
         option_context.parse (ref args);

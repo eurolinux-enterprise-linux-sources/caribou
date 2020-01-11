@@ -1,15 +1,15 @@
 # Lithuanian translation for caribou.
 # Copyright (C) 2011 caribou's COPYRIGHT HOLDER
 # This file is distributed under the same license as the caribou package.
-# Aurimas Černius <aurisc4@gmail.com>, 2011, 2013.
+# Aurimas Černius <aurisc4@gmail.com>, 2011, 2013, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: caribou master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=caribou&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2013-12-20 09:19+0000\n"
-"PO-Revision-Date: 2013-12-21 16:48+0200\n"
+"POT-Creation-Date: 2016-01-05 04:11+0000\n"
+"PO-Revision-Date: 2016-01-05 12:25+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../caribou/settings/caribou_settings.py:5
 msgid "Caribou Preferences"
-msgstr "Caribou nustatymai"
+msgstr "Caribou nuostatos"
 
 #: ../caribou/settings/caribou_settings.py:6
 msgid "Scanning"
@@ -182,7 +182,7 @@ msgstr "Caribou"
 
 #: ../caribou/antler/antler_settings.py:5
 msgid "Antler Preferences"
-msgstr "Antler nustatymai"
+msgstr "Antler nuostatos"
 
 #: ../caribou/antler/antler_settings.py:6
 msgid "Antler"
@@ -254,9 +254,9 @@ msgstr "Didžiausias atstumas"
 msgid "Maximum distance when keyboard is hidden"
 msgstr "Didžiausias atstumas, kai klaviatūra yra paslėpta"
 
-#: ../daemon/daemon.vala:191
-msgid "- daemon listening accessibility events to launch on screen keyboard"
-msgstr "- demonas klausosi prieigos įvykių, kad paleistų klaviatūrą ekrane"
+#: ../daemon/daemon.vala:217
+msgid "- accessibility event monitoring daemon for screen keyboard"
+msgstr "- prieigos įvykių stebėjimo demonas klaviatūrai ekrane"
 
 #~ msgid "Error starting %s"
 #~ msgstr "Klaida paleidžiant %s"
