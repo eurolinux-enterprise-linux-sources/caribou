@@ -1,4 +1,48 @@
 =============
+Version 0.4.16
+=============
+- Stop using deprecated accessibility events ("focus:*")
+- Bug 739837 - Allow label overwrite in keyboard layout
+- Bug 739716 - Add more keys to label_map
+- Bug 739711 - Escape key does not work in us layout.
+- Bug 739526 - Some buttons do not have a label.
+- Bug 722634 - [regression] build failure: ImportError: No module named 'caribou_settings'
+- Translation updates (Punjabi, Nepali, Slovak)
+
+=============
+Version 0.4.15
+=============
+- Fix race condition when invoking OSK through D-Bus (see comment in
+  bug 683712)
+
+=============
+Version 0.4.14
+=============
+- Bug 720653: some string in daemon.vala is not available for translation
+- Bug 722355: #!/usr/bin/python in tools/fix_gir.py
+- Bug 735504: Fails to build with latest vala
+- Bug 683712: Invocation of on screen keyboard
+- Translation updates (Tajik, Indonesian, Lithuanian, Polish,
+  Slovenian, Aragonese, Brazilian Portuguese, Czech, German,
+  Simplified Chinese, Galician, Spanish, Hungarian, Italian, Serbian,
+  Odia, Assamese, Norwegian bokmål, Tamil, Traditional Chinese,
+  Gujarati, Hebrew, Ukrainian, Latvian, Portuguese, French, Korean,
+  Russian, Danish, Basque, Belarusian, Catalan, Greek, Malayalam,
+  Hindi, Marathi, Telugu, Bengali, Kannada, Japanese)
+
+=============
+Version 0.4.13
+=============
+- Bug 698746: Accessibility : "slow keys" breaks "screen keyboard" feature
+- Translation updates (Slovak)
+
+=============
+Version 0.4.12
+=============
+- Bug 705720: libcaribou: factor out X dependency
+- Translation updates (Tadjik)
+
+=============
 Version 0.4.11
 =============
 - Bug 690435: Press and hold should allow repeating keys like

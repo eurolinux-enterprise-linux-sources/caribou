@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <repository version="1.2" xmlns="http://www.gtk.org/introspection/core/1.0" xmlns:c="http://www.gtk.org/introspection/c/1.0" xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
 <include name="GObject" version="2.0"/>
+<include name="Gdk" version="3.0"/>
 <package name="caribou-1.0"/>
 <c:include name="caribou.h"/>
 <namespace name="_Caribou" version="1.0" c:prefix="Caribou">
@@ -15,19 +16,14 @@
 		<member name="rows" c:identifier="CARIBOU_SCAN_GROUPING_ROWS" value="2"/>
 		<member name="linear" c:identifier="CARIBOU_SCAN_GROUPING_LINEAR" value="3"/>
 	</enumeration>
-	<class name="XAdapter" c:type="CaribouXAdapter" glib:type-name="CaribouXAdapter" glib:get-type="caribou_xadapter_get_type" glib:type-struct="XAdapterClass" parent="GObject.Object">
+	<class name="DisplayAdapter" c:type="CaribouDisplayAdapter" glib:type-name="CaribouDisplayAdapter" glib:get-type="caribou_display_adapter_get_type" glib:type-struct="DisplayAdapterClass" parent="GObject.Object" abstract="1">
 		<field name="parent_instance">
 			<type name="GObject.Object" c:type="GObject"/>
 		</field>
 		<field name="priv">
-			<type name="XAdapterPrivate" c:type="CaribouXAdapterPrivate*"/>
+			<type name="DisplayAdapterPrivate" c:type="CaribouDisplayAdapterPrivate*"/>
 		</field>
-		<function name="get_default" c:identifier="caribou_xadapter_get_default">
-			<return-value transfer-ownership="full">
-				<type name="Caribou.XAdapter" c:type="CaribouXAdapter*"/>
-			</return-value>
-		</function>
-		<method name="keyval_press" c:identifier="caribou_xadapter_keyval_press">
+		<method name="keyval_press" c:identifier="caribou_display_adapter_keyval_press">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -37,7 +33,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="keyval_release" c:identifier="caribou_xadapter_keyval_release">
+		<virtual-method name="keyval_press" invoker="keyval_press">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="keyval" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="keyval_release" c:identifier="caribou_display_adapter_keyval_release">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -47,7 +53,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="mod_lock" c:identifier="caribou_xadapter_mod_lock">
+		<virtual-method name="keyval_release" invoker="keyval_release">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="keyval" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="mod_lock" c:identifier="caribou_display_adapter_mod_lock">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -57,7 +73,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="mod_unlock" c:identifier="caribou_xadapter_mod_unlock">
+		<virtual-method name="mod_lock" invoker="mod_lock">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="mask" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="mod_unlock" c:identifier="caribou_display_adapter_mod_unlock">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -67,7 +93,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="mod_latch" c:identifier="caribou_xadapter_mod_latch">
+		<virtual-method name="mod_unlock" invoker="mod_unlock">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="mask" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="mod_latch" c:identifier="caribou_display_adapter_mod_latch">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -77,7 +113,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="mod_unlatch" c:identifier="caribou_xadapter_mod_unlatch">
+		<virtual-method name="mod_latch" invoker="mod_latch">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="mask" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="mod_unlatch" c:identifier="caribou_display_adapter_mod_unlatch">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -87,7 +133,17 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="get_current_group" c:identifier="caribou_xadapter_get_current_group">
+		<virtual-method name="mod_unlatch" invoker="mod_unlatch">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="mask" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="get_current_group" c:identifier="caribou_display_adapter_get_current_group">
 			<return-value transfer-ownership="full">
 				<type name="guint" c:type="guint"/>
 			</return-value>
@@ -100,7 +156,20 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="get_groups" c:identifier="caribou_xadapter_get_groups">
+		<virtual-method name="get_current_group" invoker="get_current_group">
+			<return-value transfer-ownership="full">
+				<type name="guint" c:type="guint"/>
+			</return-value>
+			<parameters>
+				<parameter name="group_name" direction="out" transfer-ownership="full">
+					<type name="utf8" c:type="gchar*"/>
+				</parameter>
+				<parameter name="variant_name" direction="out" transfer-ownership="full">
+					<type name="utf8" c:type="gchar*"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="get_groups" c:identifier="caribou_display_adapter_get_groups">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -123,7 +192,30 @@
 				</parameter>
 			</parameters>
 		</method>
-		<method name="register_key_func" c:identifier="caribou_xadapter_register_key_func">
+		<virtual-method name="get_groups" invoker="get_groups">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="group_names" direction="out" transfer-ownership="full">
+					<array length="1">
+						<type name="utf8" c:type="gchar*"/>
+					</array>
+				</parameter>
+				<parameter name="group_names_length1" direction="out" transfer-ownership="none">
+					<type name="gint" c:type="gint"/>
+				</parameter>
+				<parameter name="variant_names" direction="out" transfer-ownership="full">
+					<array length="3">
+						<type name="utf8" c:type="gchar*"/>
+					</array>
+				</parameter>
+				<parameter name="variant_names_length1" direction="out" transfer-ownership="none">
+					<type name="gint" c:type="gint"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="register_key_func" c:identifier="caribou_display_adapter_register_key_func">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -131,15 +223,31 @@
 				<parameter name="keyval" transfer-ownership="none">
 					<type name="guint" c:type="guint"/>
 				</parameter>
-				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2">
-					<type name="Caribou.XAdapterKeyButtonCallback" c:type="CaribouXAdapterKeyButtonCallback"/>
+				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2" scope="call">
+					<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
 				</parameter>
 				<parameter name="func_target" transfer-ownership="none" allow-none="1">
 					<type name="gpointer" c:type="void*"/>
 				</parameter>
 			</parameters>
 		</method>
-		<method name="register_button_func" c:identifier="caribou_xadapter_register_button_func">
+		<virtual-method name="register_key_func" invoker="register_key_func">
+			<return-value transfer-ownership="full">
+				<type name="none"/>
+			</return-value>
+			<parameters>
+				<parameter name="keyval" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2" scope="call">
+					<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
+				</parameter>
+				<parameter name="func_target" transfer-ownership="none" allow-none="1">
+					<type name="gpointer" c:type="void*"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<method name="register_button_func" c:identifier="caribou_display_adapter_register_button_func">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
 			</return-value>
@@ -147,19 +255,38 @@
 				<parameter name="button" transfer-ownership="none">
 					<type name="guint" c:type="guint"/>
 				</parameter>
-				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2">
-					<type name="Caribou.XAdapterKeyButtonCallback" c:type="CaribouXAdapterKeyButtonCallback"/>
+				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2" scope="call">
+					<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
 				</parameter>
 				<parameter name="func_target" transfer-ownership="none" allow-none="1">
 					<type name="gpointer" c:type="void*"/>
 				</parameter>
 			</parameters>
 		</method>
-		<constructor name="new" c:identifier="caribou_xadapter_new">
+		<virtual-method name="register_button_func" invoker="register_button_func">
 			<return-value transfer-ownership="full">
-				<type name="Caribou.XAdapter" c:type="CaribouXAdapter*"/>
+				<type name="none"/>
 			</return-value>
-		</constructor>
+			<parameters>
+				<parameter name="button" transfer-ownership="none">
+					<type name="guint" c:type="guint"/>
+				</parameter>
+				<parameter name="func" transfer-ownership="none" allow-none="1" closure="2" scope="call">
+					<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
+				</parameter>
+				<parameter name="func_target" transfer-ownership="none" allow-none="1">
+					<type name="gpointer" c:type="void*"/>
+				</parameter>
+			</parameters>
+		</virtual-method>
+		<function name="get_default" c:identifier="caribou_display_adapter_get_default">
+			<return-value transfer-ownership="full">
+				<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+			</return-value>
+		</function>
+		<property name="display" writable="1" construct-only="1">
+			<type name="Gdk.Display" c:type="GdkDisplay*"/>
+		</property>
 		<glib:signal name="modifiers_changed">
 			<return-value transfer-ownership="full">
 				<type name="none"/>
@@ -191,26 +318,226 @@
 				<type name="none"/>
 			</return-value>
 		</glib:signal>
-		<callback name="KeyButtonCallback" c:type="CaribouXAdapterKeyButtonCallback">
-			<return-value transfer-ownership="full">
-				<type name="none"/>
-			</return-value>
-			<parameters>
-				<parameter name="keybuttoncode" transfer-ownership="none">
+	</class>
+	<record name="DisplayAdapterClass" c:type="CaribouDisplayAdapterClass" glib:is-gtype-struct-for="DisplayAdapter">
+		<field name="parent_class">
+			<type name="GObject.ObjectClass" c:type="GObjectClass"/>
+		</field>
+				<field name="keyval_press">
+			<callback name="keyval_press" c:type="keyval_press">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="keyval" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="keyval_release">
+			<callback name="keyval_release" c:type="keyval_release">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="keyval" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="mod_lock">
+			<callback name="mod_lock" c:type="mod_lock">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="mask" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="mod_unlock">
+			<callback name="mod_unlock" c:type="mod_unlock">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="mask" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="mod_latch">
+			<callback name="mod_latch" c:type="mod_latch">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="mask" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="mod_unlatch">
+			<callback name="mod_unlatch" c:type="mod_unlatch">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="mask" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="get_current_group">
+			<callback name="get_current_group" c:type="get_current_group">
+				<return-value transfer-ownership="full">
 					<type name="guint" c:type="guint"/>
-				</parameter>
-				<parameter name="pressed" transfer-ownership="none">
-					<type name="gboolean" c:type="gboolean"/>
-				</parameter>
-				<parameter name="user_data" transfer-ownership="none" closure="2">
-					<type name="gpointer" c:type="void*"/>
-				</parameter>
-			</parameters>
-		</callback>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="group_name" direction="out" transfer-ownership="full">
+						<type name="utf8" c:type="gchar*"/>
+					</parameter>
+					<parameter name="variant_name" direction="out" transfer-ownership="full">
+						<type name="utf8" c:type="gchar*"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="get_groups">
+			<callback name="get_groups" c:type="get_groups">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="group_names" direction="out" transfer-ownership="full">
+						<array length="2">
+							<type name="utf8" c:type="gchar*"/>
+						</array>
+					</parameter>
+					<parameter name="group_names_length1" direction="out" transfer-ownership="none">
+						<type name="gint" c:type="gint"/>
+					</parameter>
+					<parameter name="variant_names" direction="out" transfer-ownership="full">
+						<array length="4">
+							<type name="utf8" c:type="gchar*"/>
+						</array>
+					</parameter>
+					<parameter name="variant_names_length1" direction="out" transfer-ownership="none">
+						<type name="gint" c:type="gint"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="register_key_func">
+			<callback name="register_key_func" c:type="register_key_func">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="keyval" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+					<parameter name="func" transfer-ownership="none" allow-none="1" closure="3" scope="call">
+						<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
+					</parameter>
+					<parameter name="func_target" transfer-ownership="none" allow-none="1">
+						<type name="gpointer" c:type="void*"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+				<field name="register_button_func">
+			<callback name="register_button_func" c:type="register_button_func">
+				<return-value transfer-ownership="full">
+					<type name="none"/>
+				</return-value>
+				<parameters>
+					<parameter name="self" transfer-ownership="none">
+						<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter*"/>
+					</parameter>
+					<parameter name="button" transfer-ownership="none">
+						<type name="guint" c:type="guint"/>
+					</parameter>
+					<parameter name="func" transfer-ownership="none" allow-none="1" closure="3" scope="call">
+						<type name="Caribou.KeyButtonCallback" c:type="CaribouKeyButtonCallback"/>
+					</parameter>
+					<parameter name="func_target" transfer-ownership="none" allow-none="1">
+						<type name="gpointer" c:type="void*"/>
+					</parameter>
+				</parameters>
+			</callback>
+		</field>
+	</record>
+	<record name="DisplayAdapterPrivate" c:type="CaribouDisplayAdapterPrivate" disguised="1"/>
+	<class name="NullAdapter" c:type="CaribouNullAdapter" glib:type-name="CaribouNullAdapter" glib:get-type="caribou_null_adapter_get_type" glib:type-struct="NullAdapterClass" parent="Caribou.DisplayAdapter">
+		<field name="parent_instance">
+			<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter"/>
+		</field>
+		<field name="priv">
+			<type name="NullAdapterPrivate" c:type="CaribouNullAdapterPrivate*"/>
+		</field>
+		<constructor name="new" c:identifier="caribou_null_adapter_new">
+			<return-value transfer-ownership="full">
+				<type name="Caribou.NullAdapter" c:type="CaribouNullAdapter*"/>
+			</return-value>
+		</constructor>
+	</class>
+	<record name="NullAdapterClass" c:type="CaribouNullAdapterClass" glib:is-gtype-struct-for="NullAdapter">
+		<field name="parent_class">
+			<type name="Caribou.DisplayAdapterClass" c:type="CaribouDisplayAdapterClass"/>
+		</field>
+	</record>
+	<record name="NullAdapterPrivate" c:type="CaribouNullAdapterPrivate" disguised="1"/>
+	<class name="XAdapter" c:type="CaribouXAdapter" glib:type-name="CaribouXAdapter" glib:get-type="caribou_xadapter_get_type" glib:type-struct="XAdapterClass" parent="Caribou.DisplayAdapter">
+		<field name="parent_instance">
+			<type name="Caribou.DisplayAdapter" c:type="CaribouDisplayAdapter"/>
+		</field>
+		<field name="priv">
+			<type name="XAdapterPrivate" c:type="CaribouXAdapterPrivate*"/>
+		</field>
+		<constructor name="new" c:identifier="caribou_xadapter_new">
+			<return-value transfer-ownership="full">
+				<type name="Caribou.XAdapter" c:type="CaribouXAdapter*"/>
+			</return-value>
+		</constructor>
 	</class>
 	<record name="XAdapterClass" c:type="CaribouXAdapterClass" glib:is-gtype-struct-for="XAdapter">
 		<field name="parent_class">
-			<type name="GObject.ObjectClass" c:type="GObjectClass"/>
+			<type name="Caribou.DisplayAdapterClass" c:type="CaribouDisplayAdapterClass"/>
 		</field>
 	</record>
 	<record name="XAdapterPrivate" c:type="CaribouXAdapterPrivate" disguised="1"/>
@@ -1340,5 +1667,21 @@
 			</callback>
 		</field>
 	</record>
+	<callback name="KeyButtonCallback" c:type="CaribouKeyButtonCallback">
+		<return-value transfer-ownership="full">
+			<type name="none"/>
+		</return-value>
+		<parameters>
+			<parameter name="keybuttoncode" transfer-ownership="none">
+				<type name="guint" c:type="guint"/>
+			</parameter>
+			<parameter name="pressed" transfer-ownership="none">
+				<type name="gboolean" c:type="gboolean"/>
+			</parameter>
+			<parameter name="user_data" transfer-ownership="none" closure="2">
+				<type name="gpointer" c:type="void*"/>
+			</parameter>
+		</parameters>
+	</callback>
 </namespace>
 </repository>

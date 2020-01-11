@@ -11,13 +11,34 @@ namespace Caribou {
         public abstract void hide (uint32 timestamp) throws IOError;
     }
 
+    [DBus (name = "org.gnome.Caribou.Daemon")]
     class Daemon : Object {
         _Keyboard keyboard;
         Atspi.Accessible current_acc;
         unowned Gdk.Display display;
+        uint name_id;
+        GLib.MainLoop main_loop;
 
         public Daemon () {
             display = Gdk.Display.get_default ();
+            name_id = Bus.own_name (BusType.SESSION,
+                                    "org.gnome.Caribou.Daemon",
+                                    BusNameOwnerFlags.ALLOW_REPLACEMENT
+                                    | BusNameOwnerFlags.REPLACE,
+                                    on_bus_acquired, null, quit);
+            main_loop = new GLib.MainLoop ();
+        }
+
+        ~Daemon () {
+            Bus.unown_name (name_id);
+        }
+
+        void on_bus_acquired (DBusConnection conn) {
+            try {
+                conn.register_object ("/org/gnome/Caribou/Daemon", this);
+            } catch (IOError e) {
+                error ("Could not register D-Bus service: %s", e.message);
+            }
         }
 
         void on_get_proxy_ready (GLib.Object? obj, GLib.AsyncResult res) {
@@ -69,19 +90,20 @@ namespace Caribou {
                 case Atspi.Role.PASSWORD_TEXT:
                 case Atspi.Role.TERMINAL:
                 case Atspi.Role.ENTRY:
-                    if (event.type.has_prefix ("focus") || event.detail1 == 1) {
-                        set_entry_location (acc);
-                        current_acc = event.source;
-                        debug ("enter text widget in %s",
-                               event.source.get_application ().name);
-                    } else if (event.detail1 == 0 && acc == current_acc) {
-                        keyboard.hide (get_timestamp ());
-                        current_acc = null;
-                        debug ("leave text widget in %s",
-                               event.source.get_application ().name);
+                    if (event.type == "object:state-changed:focused") {
+                        if (event.detail1 == 1) {
+                            set_entry_location (acc);
+                            current_acc = event.source;
+                            debug ("enter text widget in %s",
+                                   event.source.get_application ().name);
+                        } else if (acc == current_acc) {
+                            keyboard.hide (get_timestamp ());
+                            current_acc = null;
+                            debug ("leave text widget in %s",
+                                   event.source.get_application ().name);
+                        }
                     } else {
-                        warning ("unhandled editable widget: %s",
-                                 event.source.name);
+                        warning ("unknown focus event: %s", event.type);
                     }
                     break;
                 default:
@@ -129,8 +151,6 @@ namespace Caribou {
             Atspi.EventListener.register_from_callback (
                 on_focus_ignore_error, "object:state-changed:focused");
             Atspi.EventListener.register_from_callback (
-                on_focus_ignore_error, "focus:");
-            Atspi.EventListener.register_from_callback (
                 on_text_caret_moved_ignore_error, "object:text-caret-moved");
         }
 
@@ -138,11 +158,15 @@ namespace Caribou {
             Atspi.EventListener.deregister_from_callback (
                 on_focus_ignore_error, "object:state-changed:focused");
             Atspi.EventListener.deregister_from_callback (
-                on_focus_ignore_error, "focus:");
-            Atspi.EventListener.deregister_from_callback (
                 on_text_caret_moved_ignore_error, "object:text-caret-moved");
         }
 
+        [DBus (name = "Run")]
+        public void ping () {
+            // This method is called over D-Bus, upon activation.
+        }
+
+        [DBus (visible = false)]
         public void run () {
             Bus.get_proxy.begin<_Keyboard> (BusType.SESSION,
                                             "org.gnome.Caribou.Keyboard",
@@ -150,7 +174,7 @@ namespace Caribou {
                                             0,
                                             null,
                                             on_get_proxy_ready);
-            Gtk.main ();
+            main_loop.run ();
         }
 
         public void quit () {
@@ -169,8 +193,7 @@ namespace Caribou {
                 keyboard = null;
             }
 
-            if (Gtk.main_level () > 0)
-                Gtk.main_quit ();
+            main_loop.quit ();
         }
     }
 }
@@ -180,15 +203,15 @@ static const OptionEntry[] options = {
 };
 
 static int main (string[] args) {
-    Gtk.init (ref args);
+    Gdk.init (ref args);
 
     Intl.setlocale (LocaleCategory.ALL, "");
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-    var option_context = new OptionContext (
-        "- daemon listening accessibility events to launch on screen keyboard");
+    var option_context = new OptionContext (_(
+        "- daemon listening accessibility events to launch on screen keyboard"));
     option_context.add_main_entries (options, "caribou");
     try {
         option_context.parse (ref args);

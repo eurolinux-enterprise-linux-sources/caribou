@@ -4,21 +4,23 @@
 # Pierros Papadeas <ppapadeas@gmail.com>, 2010
 # Kostas Papadimas <pkst@gnome.org>, 2010.
 # Ioannis Zampoukas <ioza1964@yahoo.gr>, 2011, 2012.
-#
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=caribou&keywords=I18N+L10N&component=default\n"
-"POT-Creation-Date: 2012-05-30 11:03+0000\n"
-"PO-Revision-Date: 2012-06-22 21:38+0300\n"
-"Last-Translator: Ioannis Zampoukas <ioza1964@yahoo.gr>\n"
-"Language-Team: Greek <team@gnome.gr>\n"
+"POT-Creation-Date: 2014-07-09 03:00+0000\n"
+"PO-Revision-Date: 2014-07-09 12:22+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
+"Language-Team: www.gnome.gr\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Project-Style: gnome\n"
 
 #: ../caribou/settings/caribou_settings.py:5
 msgid "Caribou Preferences"
@@ -58,7 +60,7 @@ msgstr "Γραμμές"
 
 #: ../caribou/settings/caribou_settings.py:18
 msgid "Linear"
-msgstr "Γραμμικό"
+msgstr "Γραμμική"
 
 #: ../caribou/settings/caribou_settings.py:20
 msgid "Step time"
@@ -70,7 +72,7 @@ msgstr "Χρόνος μεταξύ βασικών αλλαγών"
 
 #: ../caribou/settings/caribou_settings.py:24
 msgid "Inverse scanning"
-msgstr "Αντιστροφή σάρωση"
+msgstr "Αντίστροφη σάρωση"
 
 #: ../caribou/settings/caribou_settings.py:25
 msgid "Step with the switch, activate by dwelling"
@@ -90,7 +92,7 @@ msgstr "Κύκλοι σάρωσης"
 
 #: ../caribou/settings/caribou_settings.py:31
 msgid "One"
-msgstr "Ένα"
+msgstr "Ένας"
 
 #: ../caribou/settings/caribou_settings.py:32
 msgid "Two"
@@ -98,11 +100,11 @@ msgstr "Δύο"
 
 #: ../caribou/settings/caribou_settings.py:33
 msgid "Three"
-msgstr "Τρία"
+msgstr "Τρεις"
 
 #: ../caribou/settings/caribou_settings.py:34
 msgid "Four"
-msgstr "Τέσσερα"
+msgstr "Τέσσερεις"
 
 #: ../caribou/settings/caribou_settings.py:35
 msgid "Five"
@@ -114,11 +116,11 @@ msgstr "Είσοδος"
 
 #: ../caribou/settings/caribou_settings.py:39
 msgid "Switch device"
-msgstr "Συσκευή αλλαγής"
+msgstr "Διακόπτης συσκευής"
 
 #: ../caribou/settings/caribou_settings.py:41
 msgid "Switch device, keyboard or mouse"
-msgstr "Συσκευή αλλαγής, πληκτρολόγιο ή ποντίκι"
+msgstr "Διακόπτης συσκευής, πληκτρολόγιο ή ποντίκι"
 
 #: ../caribou/settings/caribou_settings.py:43
 msgid "Keyboard"
@@ -130,19 +132,19 @@ msgstr "Ποντίκι"
 
 #: ../caribou/settings/caribou_settings.py:46
 msgid "Switch key"
-msgstr "Αλλαγή κλειδιού"
+msgstr "Πλήκτρο διακόπτη"
 
 #: ../caribou/settings/caribou_settings.py:48
 msgid "Key to use with scanning mode"
-msgstr "Κλειδί για χρήση με λειτουργία σάρωσης"
+msgstr "Πλήκτρο προς χρήση για τη λειτουργία σάρωσης"
 
 #: ../caribou/settings/caribou_settings.py:50
 msgid "Right shift"
-msgstr "Δεξιά μετατόπιση"
+msgstr "Δεξιό shift"
 
 #: ../caribou/settings/caribou_settings.py:51
 msgid "Left shift"
-msgstr "Αριστερή μετατόπιση"
+msgstr "Αριστερό shift"
 
 #: ../caribou/settings/caribou_settings.py:52
 msgid "Space"
@@ -158,11 +160,11 @@ msgstr "Num lock"
 
 #: ../caribou/settings/caribou_settings.py:55
 msgid "Switch button"
-msgstr "Αλλαγή κουμπιού"
+msgstr "Κουμπί διακόπτη"
 
 #: ../caribou/settings/caribou_settings.py:58
 msgid "Mouse button to use in the scanning mode"
-msgstr "Πλήκτρο του ποντικιού για χρήση στην λειτουργία σάρωσης"
+msgstr "Πλήκτρο του ποντικιού προς χρήση για τη λειτουργία σάρωσης"
 
 #: ../caribou/settings/caribou_settings.py:60
 msgid "Button 1"
@@ -176,34 +178,9 @@ msgstr "Κουμπί 2"
 msgid "Button 3"
 msgstr "Κουμπί 3"
 
-#: ../caribou/__init__.py:2
+#: ../caribou/__init__.py:8
 msgid "Caribou"
 msgstr "Caribou"
-
-#: ../caribou/daemon/main.py:34
-#, python-format
-msgid "Error starting %s"
-msgstr "Σφάλμα κατά την εκκίνηση %s"
-
-#: ../caribou/daemon/main.py:45
-#, python-format
-msgid ""
-"In order to use %s, accessibility needs to be enabled. Do you want to enable "
-"it now?"
-msgstr ""
-"Για να χρησιμοποιήσετε %s, η υπηρεσία προσιτότητας πρέπει να είναι "
-"ενεργοποιημένη. Θέλετε να το ενεργοποιήσετε τώρα;"
-
-#: ../caribou/daemon/main.py:59
-#, python-format
-msgid "Accessibility has been enabled. Log out and back in again to use %s."
-msgstr ""
-"Η προσιτότητα έχει ενεργοποιηθεί. Αποσυνδεθείτε και συνδεθείτε ξανά για να "
-"χρησιμοποιήσετε το %s."
-
-#: ../caribou/daemon/main.py:156
-msgid "WARNING - Caribou: unhandled editable widget:"
-msgstr "ΠΡΟΣΟΧΗ - Caribou: μη διαχειρίσιμο, επεξεργάσιμο στοιχείο ελέγχου:"
 
 #: ../caribou/antler/antler_settings.py:5
 msgid "Antler Preferences"
@@ -238,26 +215,26 @@ msgstr ""
 #. Translators: Keyboard type (similar to touch/tactile device)
 #: ../caribou/antler/antler_settings.py:16
 msgid "Touch"
-msgstr "Αφή"
+msgstr "Αφής"
 
 #. Translators: Keyboard type (conventional keyboard)
 #: ../caribou/antler/antler_settings.py:18
 msgid "Full scale"
-msgstr "Ευρεία κλιμακα"
+msgstr "Ευρείας κλίμακας"
 
 #. Translators: Keyboard type (scanned grid by rows/columns)
 #: ../caribou/antler/antler_settings.py:20
 msgid "Scan"
-msgstr "Σάρωση"
+msgstr "Σάρωσης"
 
 #: ../caribou/antler/antler_settings.py:21
 #: ../caribou/antler/antler_settings.py:22
 msgid "Use System Theme"
-msgstr "Χρησιμοποίηση θέματος συστήματος"
+msgstr "Χρήση θέματος συστήματος"
 
 #: ../caribou/antler/antler_settings.py:23
 msgid "Minimum Alpha"
-msgstr "Ελάχιστο Alpha"
+msgstr "Ελάχιστο Άλφα"
 
 #: ../caribou/antler/antler_settings.py:24
 msgid "Minimal opacity of keyboard"
@@ -265,7 +242,7 @@ msgstr "Ελάχιστη αδιαφάνεια του πληκτρολογίου"
 
 #: ../caribou/antler/antler_settings.py:26
 msgid "Maximum Alpha"
-msgstr "Μέγιστο Alpha"
+msgstr "Μέγιστο Άλφα"
 
 #: ../caribou/antler/antler_settings.py:27
 msgid "Maximal opacity of keyboard"
@@ -278,6 +255,30 @@ msgstr "Μέγιστη απόσταση"
 #: ../caribou/antler/antler_settings.py:30
 msgid "Maximum distance when keyboard is hidden"
 msgstr "Μέγιστη απόσταση όταν το πληκτρολόγιο είναι κρυμμένο"
+
+#: ../daemon/daemon.vala:191
+msgid "- daemon listening accessibility events to launch on screen keyboard"
+msgstr ""
+"- η υπηρεσία ακούει τα συμβάντα προσβασιμότητας για να εκκινήσει το "
+"πληκτρολόγιο οθόνης"
+
+#~ msgid "Error starting %s"
+#~ msgstr "Σφάλμα κατά την εκκίνηση %s"
+
+#~ msgid ""
+#~ "In order to use %s, accessibility needs to be enabled. Do you want to "
+#~ "enable it now?"
+#~ msgstr ""
+#~ "Για να χρησιμοποιήσετε %s, η υπηρεσία προσιτότητας πρέπει να είναι "
+#~ "ενεργοποιημένη. Θέλετε να το ενεργοποιήσετε τώρα;"
+
+#~ msgid "Accessibility has been enabled. Log out and back in again to use %s."
+#~ msgstr ""
+#~ "Η προσιτότητα έχει ενεργοποιηθεί. Αποσυνδεθείτε και συνδεθείτε ξανά για "
+#~ "να χρησιμοποιήσετε το %s."
+
+#~ msgid "WARNING - Caribou: unhandled editable widget:"
+#~ msgstr "ΠΡΟΣΟΧΗ - Caribou: μη διαχειρίσιμο, επεξεργάσιμο στοιχείο ελέγχου:"
 
 #, fuzzy
 #~ msgid "Keyboard layout"

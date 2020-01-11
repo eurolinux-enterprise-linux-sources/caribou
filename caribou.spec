@@ -1,6 +1,6 @@
 Name:           caribou
-Version:        0.4.11
-Release:        3%{?dist}
+Version:        0.4.16
+Release:        1%{?dist}
 Summary:        A simplified in-place on-screen keyboard
 License:        LGPLv2+
 URL:            http://live.gnome.org/Caribou
@@ -91,7 +91,7 @@ non-gnome-shell sessions.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+make V=1 %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
@@ -123,14 +123,15 @@ fi
 
 %files -f caribou.lang
 %doc NEWS COPYING README
-%{_bindir}/caribou
 %{_bindir}/caribou-preferences
 %{_datadir}/caribou
 %{_libdir}/girepository-1.0/Caribou-1.0.typelib
 %{_sysconfdir}/xdg/autostart/caribou-autostart.desktop
+%{_datadir}/dbus-1/services/org.gnome.Caribou.Daemon.service
 %{_datadir}/glib-2.0/schemas/org.gnome.caribou.gschema.xml
 %{_libdir}/libcaribou.so.0*
 %{_libdir}/gnome-settings-daemon-3.0/gtk-modules/caribou-gtk-module.desktop
+%{_libexecdir}/caribou
 
 %files -n python-caribou
 %{python_sitelib}/caribou
@@ -156,6 +157,16 @@ fi
 
 
 %changelog
+* Mon Mar 23 2015 Richard Hughes <rhughes@redhat.com> - 0.4.16-1
+- Update to 0.4.16
+- Resolves: #1174709
+
+* Tue Aug 19 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.4.11-5
+- Resolves:rh#1054596 - Untranslated strings found
+
+* Mon Aug 18 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.4.11-4
+- Resolves:rh#1054596 - Untranslated strings found
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.4.11-3
 - Mass rebuild 2014-01-24
 

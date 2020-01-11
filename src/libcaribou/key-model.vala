@@ -26,7 +26,7 @@ namespace Caribou {
         public uint keyval { get; private set; }
         public string? text { get; private construct set; default = null; }
         private uint[] _keyvals = {};
-        public string label { get; private set; default = ""; }
+        public string label { get; set; default = ""; }
 
         public bool scan_stepping { get; internal set; }
         private bool _scan_selected;
@@ -43,7 +43,7 @@ namespace Caribou {
         }
 
         private uint hold_tid;
-        private XAdapter xadapter;
+        private DisplayAdapter xadapter;
         private Gee.ArrayList<KeyModel> extended_keys;
 
         public signal void key_hold_end ();
@@ -58,12 +58,20 @@ namespace Caribou {
         private const LabelMapEntry label_map[] = {
             { "BackSpace", "\xe2\x8c\xab" },
             { "space", " " },
+            { "Delete", "\xe2\x8c\xa6" },
             { "Return", "\xe2\x8f\x8e" },
-            { "Return", "\xe2\x8f\x8e" },
+            { "Escape", "Esc" },
+            { "Tab", "\xe2\x86\xb9"},
             { "Control_L", "Ctrl" },
             { "Control_R", "Ctrl" },
             { "Alt_L", "Alt" },
             { "Alt_R", "Alt" },
+            { "Up", "\xe2\x87\xa1"},
+            { "Down", "\xe2\x87\xa3"},
+            { "Left", "\xe2\x87\xa0"},
+            { "Right", "\xe2\x87\xa2"},
+            { "Prior", "Page\nUp" },
+            { "Next", "Page\nDown" },
             { "Caribou_Prefs", "\xe2\x8c\xa8" },
             { "Caribou_ShiftUp", "\xe2\xac\x86" },
             { "Caribou_ShiftDown", "\xe2\xac\x87" },
@@ -110,19 +118,38 @@ namespace Caribou {
                     break;
                 }
             }
+
             if (i == label_map.length) {
                 if (text != null)
                     label = text;
                 else if (name.has_prefix ("Caribou_"))
                     label = name["Caribou_".length:name.length];
-                else if (_keyvals.length > 0) {
-                    unichar uc = Gdk.keyval_to_unicode (_keyvals[0]);
-                    if (!uc.isspace () && uc != 0)
-                        label = uc.to_string ();
+                else {
+                    // Try to use Unicode symbol as label.
+                    if (_keyvals.length > 0) {
+                        unichar uc = Gdk.keyval_to_unicode (_keyvals[0]);
+                        if (!uc.isspace () && uc != 0)
+                            label = uc.to_string ();
+                    }
+                    // If no usable Unicode symbol is assigned to the
+                    // key, guess the best possible label.
+                    //
+                    // First, it is known that dead keys are not
+                    // assigned Unicode symbols.  Use the ones
+                    // assigned to non-dead keys instead.
+                    if (label == "" && name.has_prefix ("dead_")) {
+                        uint keyval = Gdk.keyval_from_name (name["dead_".length:name.length]);
+                        unichar uc = Gdk.keyval_to_unicode (keyval);
+                        if (!uc.isspace () && uc != 0)
+                            label = uc.to_string ();
+                    }
+                    // Second, use the key name as label.
+                    if (label == "" && _keyvals.length > 0)
+                        label = name;
                 }
             }
 
-            xadapter = XAdapter.get_default();
+            xadapter = DisplayAdapter.get_default();
             extended_keys = new Gee.ArrayList<KeyModel> ();
         }
 

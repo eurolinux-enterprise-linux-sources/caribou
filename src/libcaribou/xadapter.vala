@@ -2,15 +2,8 @@ namespace Caribou {
     /**
      * Singleton object providing access to the X Window facility.
      */
-    public class XAdapter : Object {
-
-        /* Signals */
-        public signal void modifiers_changed (uint modifiers);
-        public signal void group_changed (uint gid, string group, string variant);
-        public signal void config_changed ();
-
+    public class XAdapter : DisplayAdapter {
         /* Private properties */
-        static XAdapter instance;
         unowned X.Display xdisplay;
         X.ID xid;
         Xkb.Desc xkbdesc;
@@ -20,8 +13,6 @@ namespace Caribou {
         uchar modifiers;
         uchar group;
         uint[] level_switch_modifiers;
-
-        public delegate void KeyButtonCallback (uint keybuttoncode, bool pressed);
 
         private class KeyButtonHandler {
             public unowned KeyButtonCallback cb { get; private set; }
@@ -81,10 +72,22 @@ namespace Caribou {
             Xkb.free_keyboard(this.xkbdesc, Xkb.GBN_AllComponentsMask, true);
         }
 
-        public static XAdapter get_default() {
-            if (instance == null)
-                instance = new XAdapter ();
-            return instance;
+        private bool set_slowkeys_enabled (bool enable) {
+            Xkb.get_controls (this.xdisplay, Xkb.AllControlsMask, this.xkbdesc);
+
+            var previous =
+                (this.xkbdesc.ctrls.enabled_ctrls & Xkb.SlowKeysMask) != 0;
+
+            if (enable)
+                this.xkbdesc.ctrls.enabled_ctrls |= Xkb.SlowKeysMask;
+            else
+                this.xkbdesc.ctrls.enabled_ctrls &= ~Xkb.SlowKeysMask;
+
+            Xkb.set_controls (this.xdisplay,
+                              Xkb.SlowKeysMask | Xkb.ControlsEnabledMask,
+                              this.xkbdesc);
+
+            return previous;
         }
 
         private Gdk.FilterReturn x_event_filter (Gdk.XEvent xevent, Gdk.Event event) {
@@ -103,7 +106,7 @@ namespace Caribou {
             Xkb.Event* xkbev = (Xkb.Event *) pointer;
             X.Event* xev = (X.Event *) pointer;
 
-			this.xkl_engine.filter_events(xev);
+            this.xkl_engine.filter_events(xev);
 
             if (xev.type == X.EventType.ButtonPress ||
                 xev.type == X.EventType.ButtonRelease) {
@@ -122,7 +125,7 @@ namespace Caribou {
                                 xev.type == X.EventType.KeyPress);
             } else if (xkbev.any.xkb_type == Xkb.StateNotify) {
                 Xkb.StateNotifyEvent *sevent = &xkbev.state;
-				if ((sevent.changed & Xkb.ModifierStateMask) != 0) {
+                if ((sevent.changed & Xkb.ModifierStateMask) != 0) {
                     this.modifiers = (uchar) sevent.mods;
                 }
             }
@@ -254,45 +257,47 @@ namespace Caribou {
             return keycode;
         }
 
-        public void keyval_press (uint keyval) {
+        public override void keyval_press (uint keyval) {
             uint mask;
             uchar keycode = keycode_for_keyval (keyval, out mask);
 
             if (mask != 0)
                 mod_latch (mask);
 
+            var enabled = set_slowkeys_enabled (false);
             XTest.fake_key_event (this.xdisplay, keycode, true, X.CURRENT_TIME);
             this.xdisplay.flush ();
+            set_slowkeys_enabled (enabled);
         }
 
-        public void keyval_release (uint keyval) {
+        public override void keyval_release (uint keyval) {
             uchar keycode = keycode_for_keyval (keyval, null);
 
             XTest.fake_key_event (this.xdisplay, keycode, false, X.CURRENT_TIME);
             this.xdisplay.flush ();
         }
 
-        public void mod_lock (uint mask) {
+        public override void mod_lock (uint mask) {
             Xkb.lock_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, mask);
             this.xdisplay.flush ();
         }
 
-        public void mod_unlock (uint mask) {
+        public override void mod_unlock (uint mask) {
             Xkb.lock_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, 0);
             this.xdisplay.flush();
         }
 
-        public void mod_latch (uint mask) {
+        public override void mod_latch (uint mask) {
             Xkb.latch_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, mask);
             this.xdisplay.flush ();
         }
 
-        public void mod_unlatch (uint mask) {
+        public override void mod_unlatch (uint mask) {
             Xkb.latch_modifiers (this.xdisplay, Xkb.UseCoreKbd, mask, 0);
             this.xdisplay.flush ();
         }
 
-        public uint get_current_group (out string group_name,
+        public override uint get_current_group (out string group_name,
                                        out string variant_name) {
             Xkl.ConfigRec config_rec = new Xkl.ConfigRec ();
             config_rec.get_from_server (this.xkl_engine);
@@ -304,7 +309,7 @@ namespace Caribou {
             return this.group;
         }
 
-        public void get_groups (out string[] group_names,
+        public override void get_groups (out string[] group_names,
                                 out string[] variant_names) {
             int i;
             Xkl.ConfigRec config_rec = new Xkl.ConfigRec ();
@@ -328,7 +333,9 @@ namespace Caribou {
             }
         }
 
-        public void register_key_func (uint keyval, KeyButtonCallback? func) {
+        public override void register_key_func (uint keyval,
+                                                KeyButtonCallback? func)
+        {
             uchar keycode;
             uint modmask;
 
@@ -349,7 +356,9 @@ namespace Caribou {
             }
         }
 
-        public void register_button_func (uint button, KeyButtonCallback? func) {
+        public override void register_button_func (uint button,
+                                                   KeyButtonCallback? func)
+        {
             if (func != null) {
                 var handler = new KeyButtonHandler (func);
                 button_funcs.set (button, handler);
@@ -363,6 +372,5 @@ namespace Caribou {
                 xdisplay.ungrab_button (button, 0, xid);
             }
         }
-
     }
 }

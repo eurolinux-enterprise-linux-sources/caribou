@@ -32,6 +32,7 @@ libcaribou_la_LIBADD = \
 	$(LIBCARIBOU_LIBS)
 
 libcaribou_la_SOURCES = \
+	display-adapter.vala \
 	xadapter.vala \
 	keyboard-model.vala \
 	keyboard-service.vala \
@@ -62,7 +63,7 @@ typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = Caribou-1.0.typelib
 
 Caribou-1.0.gir: _Caribou-1.0.gir
-	$(top_srcdir)/tools/fix_gir.py $< > $@
+	$(AM_V_GEN)$(PYTHON) -B $(top_srcdir)/tools/fix_gir.py $< > $@
 
 Caribou-1.0.typelib: Caribou-1.0.gir
 	@INTROSPECTION_COMPILER@ --shared-library=libcaribou.so.0 -o $@ $^

@@ -12,7 +12,7 @@ def C_(ctx, s):
     return translated
 
 gettext.bindtextdomain ("caribou",
-                        os.path.join ("/usr", "share", "locale"))
+                        os.path.join ("/usr/local", "share", "locale"))
 
 gettext.textdomain("caribou")
 
